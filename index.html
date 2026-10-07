@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Expense Splitter (Android) | Final Commit sample project</title>
+  <meta name="description" content="An Android app for splitting bills with roommates: who owes whom, a short list of payments to settle up, and Pay via UPI. Kotlin, Jetpack Compose, Room. A sample project by Final Commit." />
+  <link rel="icon" href="https://finalcommitprojects.github.io/favicon.svg" type="image/svg+xml" />
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="f6b0f6cf-bb7f-4bd1-917e-acc1d8116251" data-domains="finalcommitprojects.github.io"></script>
+  <style>
+    :root { --bg: #f6f7f4; --ink: #1c2434; --ink-2: #566074; --green: #1d7a4c; color-scheme: light; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+    main { max-width: 980px; margin: 0 auto; padding: 28px 16px 40px; }
+    .tag { margin: 0; font: 600 .78rem/1 ui-monospace, Menlo, monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--green); }
+    h1 { margin: 10px 0 6px; font-size: clamp(1.7rem, 1.2rem + 2vw, 2.4rem); line-height: 1.1; }
+    .sub { margin: 0 0 18px; color: var(--ink-2); max-width: 40em; }
+    .cta { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 8px; }
+    .btn { display: inline-block; padding: 12px 20px; border-radius: 10px; background: var(--green); color: #fff; font-weight: 700; text-decoration: none; }
+    .btn.line { background: transparent; color: var(--green); box-shadow: inset 0 0 0 2px var(--green); }
+    .meta { font-size: .9rem; color: var(--ink-2); }
+    .shots { display: flex; gap: 12px; overflow-x: auto; padding: 18px 0; scroll-snap-type: x mandatory; }
+    .shots img { width: 220px; flex: none; border-radius: 18px; box-shadow: 0 10px 24px -14px rgba(0,0,0,.4); scroll-snap-align: start; }
+    section { background: #fff; border-radius: 12px; padding: 14px 18px; margin-top: 14px; }
+    h2 { font-size: 1.1rem; margin: 0 0 8px; }
+    ol, ul { margin: 0; padding-left: 1.2em; color: var(--ink-2); }
+    li + li { margin-top: 4px; }
+    footer { margin-top: 24px; font-size: .9rem; color: var(--ink-2); }
+    a { color: var(--ink); }
+  </style>
+</head>
+<body>
+<main>
+  <p class="tag">Sample project · Android app</p>
+  <h1>Expense Splitter</h1>
+  <p class="sub">Split bills with roommates and friends. It works out who owes whom, suggests a short list of payments to settle everything, and opens your UPI app to pay. Works offline; data stays on the phone.</p>
+  <div class="cta">
+    <a class="btn" href="https://github.com/finalcommitprojects/demo-expense-splitter/releases/latest/download/expense-splitter.apk" data-umami-event="demo-apk-download">Download the APK (1.4 MB)</a>
+  </div>
+  <p class="meta">Android 8.0 or newer. Signed release build that asks for no permissions: no internet, contacts or storage. No ads.<br>Check the download: SHA-256 <code style="word-break: break-all">e4ec0530f428a21976003031fec225c567e2c28d6f39257ddf3b4839273a9128</code></p>
+
+  <div class="shots">
+    <img src="docs/3-balances.png" alt="Balances: who gets back money, who owes, and the payments that settle up" />
+    <img src="docs/2-expenses.png" alt="Expenses in a flat-share group" />
+    <img src="docs/5-add-expense.png" alt="Adding an expense split equally among four people" />
+    <img src="docs/4-chart.png" alt="Monthly spending chart" />
+    <img src="docs/1-groups.png" alt="Groups list" />
+  </div>
+
+  <section>
+    <h2>Installing it</h2>
+    <ol>
+      <li>Tap <b>Download the APK</b> on your Android phone.</li>
+      <li>Open the downloaded file. If Android asks, allow installs from your browser (Settings, then "Install unknown apps").</li>
+      <li>Open <b>Expense Splitter</b>. It starts with a sample group, "Flat 304", so you can try it straight away.</li>
+    </ol>
+  </section>
+  <section>
+    <h2>What's inside</h2>
+    <ul>
+      <li>Kotlin, Jetpack Compose (Material 3), Room database, Navigation, ViewModel with Flow</li>
+      <li>Amounts stored in paise as whole numbers, so ₹100 split three ways is ₹33.34 + ₹33.33 + ₹33.33, never ₹99.99</li>
+      <li>Settle-up uses a greedy algorithm: the person who owes most pays the person owed most, which needs at most (people minus 1) payments. Short, though not always the shortest possible.</li>
+      <li>"Pay via UPI" builds a <code>upi://pay</code> link with the amount filled in; "Mark as paid" records the settlement</li>
+      <li>Unit tests for splitting, balances and settle-up</li>
+    </ul>
+  </section>
+  <footer>A sample project by <a href="https://finalcommitprojects.github.io/?utm_source=demo&amp;utm_campaign=demo-expense-splitter" data-umami-event="demo-to-site">Final Commit</a>. The names in the sample group are made up.</footer>
+</main>
+</body>
+</html>
